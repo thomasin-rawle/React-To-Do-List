@@ -1,3 +1,26 @@
-.todo {
-    color : blue;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px
+}
+li {
+    color:#474747;
+    list-style: none;
+    position: relative;
+    user-select: none;
+}
+li.completed {
+    text-decoration: line-through;
+}
+li:before, li.completed:before {
+    content:'\f10c';
+    position: absolute;
+    left:-10px;
+    top: 0;
+    font-family: fontawesome;
+    transform: translateX(-100%)
+
+}
+li.completed:before {
+content:'\f058';
+color:#61e2ac
 }
