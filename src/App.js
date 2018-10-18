@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import List from './components/List'
+import TodoAdder from './components/TodoAdder';
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+    state = {
+        todos: ['learn tap dance', 'visit grandparents', 'go and get coffee']
+    }
+
+    render() {
+        return (
+            <div>
+                <h3>My to-do lists</h3>
+                <TodoAdder addTodo={this.addTodo} />
+                <List todos={this.state.todos} removeTodo={this.removeTodo} />
+            </div>
+        );
+    }
+
+    removeTodo = (completedTodo) => {
+
+        const newTodos = this.state.todos.filter(eachTodo => completedTodo !== eachTodo)
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+    addTodo = (newTodo) => {
+        const newTodos = [...this.state.todos, newTodo]
+        this.setState({
+            todos: newTodos
+        })
+    }
 }
+
 
 export default App;
